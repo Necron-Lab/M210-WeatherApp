@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-fetcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-fetcher
+  template:
+    metadata:
+      labels:
+        app: weather-fetcher
+    spec:
+      containers:
+      - name: weather-fetcher
+        image: {{ .Values.weatherFetcher.image }}
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNET_ENVIRONMENT
+          value: Production
+        - name: ConnectionStrings__Marten
+          value: "host=postgres; port=5432; database=postgres; username=postgres; password={{ .Values.postgresPassword }}"
+        - name: Api__Key
+          value: "1c39ca929b4b4d23a4364338231708"

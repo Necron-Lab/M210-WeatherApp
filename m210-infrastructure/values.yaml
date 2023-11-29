@@ -1,0 +1,10 @@
+postgresPassword: 347
+weatherFetcher:
+  image: ch33sy/weatherfetcher:latest
+  # Weitere Konfiguration für den weather-fetcher hier
+weatherInterface:
+  image: znecron/m347:latest
+  # Weitere Konfiguration für den weather-interface hier
+portainer:
+  image: portainer/portainer
+  # Weitere Konfiguration für Portainer hier
